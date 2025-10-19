@@ -1,21 +1,32 @@
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+
   <title>Ruah Elevadores — Onde o Espírito sopra, a excelência se eleva.</title>
-  <link rel="stylesheet" href="style.css">
+  <meta name="description" content="Elevadores residenciais, plataformas de acessibilidade e monta-cargas com design premium, conforto e segurança certificada. Atendimento em Brasília e todo Brasil." />
+
+  <!-- Fonte -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;900&display=swap" rel="stylesheet">
-  <script src="https://kit.fontawesome.com/a2b0d1a0c4.js" crossorigin="anonymous"></script>
+
+  <!-- CSS -->
+  <link rel="stylesheet" href="style.css?v=3">
 </head>
 <body>
 
   <!-- ===== NAVBAR ===== -->
   <nav class="navbar">
     <div class="container">
-      <a href="#" class="brand">Ruah Elevadores</a>
+      <a href="#hero" class="brand">Ruah Elevadores</a>
+
+      <input id="menu-toggle" type="checkbox" aria-label="Abrir menu">
+      <label class="hamburger" for="menu-toggle" aria-hidden="true">
+        <span></span><span></span><span></span>
+      </label>
+
       <div class="nav-links">
         <a href="#hero">Início</a>
         <a href="#produtos">Soluções</a>
@@ -25,8 +36,10 @@
     </div>
   </nav>
 
-  <!-- ===== HERO ===== -->
-  <header id="hero" class="hero" aria-label="Ruah Hero"></header>
+  <!-- ===== HERO (usa a imagem local imagens/hero-ruah.jpg via CSS) ===== -->
+  <header id="hero" class="hero" aria-label="Imagem destaque Ruah">
+    <!-- vazio de propósito: a imagem é aplicada no CSS para manter o foco responsivo -->
+  </header>
 
   <!-- ===== FRASE / TAGLINE ===== -->
   <section class="tagline section">
@@ -42,79 +55,89 @@
   </section>
 
   <!-- ===== PRODUTOS ===== -->
-  <section id="produtos" class="produtos">
+  <section id="produtos" class="produtos section">
     <div class="container">
       <h2>Nossas Soluções</h2>
-      <p class="intro">Atendemos residências, comércios e indústrias com equipamentos sob medida, unindo tecnologia, estética e confiabilidade.</p>
+      <p class="intro">
+        Atendemos residências, comércios e indústrias com equipamentos sob medida, unindo tecnologia,
+        estética e confiabilidade.
+      </p>
 
-      <div class="categoria">
-
-
+      <!-- Elevadores Residenciais -->
       <div class="categoria">
         <h3>Elevadores Residenciais</h3>
         <div class="grid">
-          <div class="card">
+          <article class="card">
             <img src="https://i.imgur.com/L0qn0T6.jpeg" alt="Homelift Ágile">
             <h4>Homelift Ágile</h4>
             <p>Silencioso, de baixo consumo e com instalação otimizada. Sofisticação acessível para seu lar.</p>
-          </div>
-          <div class="card">
+          </article>
+
+          <article class="card">
             <img src="https://i.imgur.com/nZTTyMh.jpeg" alt="Elevador Unique">
             <h4>Elevador Unique</h4>
             <p>Design panorâmico e acabamentos premium para quem exige excelência estética e funcional.</p>
-          </div>
-          <div class="card">
+          </article>
+
+          <article class="card">
             <img src="https://i.imgur.com/hYIRyjh.jpeg" alt="Elevador Unno">
             <h4>Elevador Unno</h4>
             <p>Minimalista e elegante, ideal para projetos contemporâneos que unem estilo e praticidade.</p>
-          </div>
+          </article>
         </div>
       </div>
 
+      <!-- Plataformas -->
       <div class="categoria">
         <h3>Plataformas de Acessibilidade</h3>
         <div class="grid">
-          <div class="card">
+          <article class="card">
             <img src="https://i.imgur.com/b6xBXHX.png" alt="Plataforma Vertical">
             <h4>Plataformas Verticais</h4>
             <p>Projetadas para pequenos e médios desníveis, garantindo conforto e acessibilidade com elegância.</p>
-          </div>
-          <div class="card">
+          </article>
+
+          <article class="card">
             <img src="https://i.imgur.com/qFeyjt4.jpeg" alt="Plataforma Enclausurada">
             <h4>Plataformas Enclausuradas</h4>
             <p>Estrutura segura e moderna para ambientes externos ou internos, com total proteção ao usuário.</p>
-          </div>
-          <div class="card">
+          </article>
+
+          <article class="card">
             <img src="https://i.imgur.com/GQaCRUJ.jpeg" alt="Projetos Especiais">
             <h4>Projetos Especiais</h4>
             <p>Desenvolvemos plataformas sob medida, personalizadas para o seu projeto arquitetônico.</p>
-          </div>
+          </article>
         </div>
       </div>
 
-              <h3>Monta-Cargas</h3>
+      <!-- Monta-cargas -->
+      <div class="categoria">
+        <h3>Monta-Cargas</h3>
         <div class="grid">
-          <div class="card">
+          <article class="card">
             <img src="https://i.imgur.com/5Ap1qZD.png" alt="Monta-Cargas Industrial">
             <h4>Industrial</h4>
             <p>Robustez para fábricas e centros logísticos, otimizando o transporte vertical de cargas com segurança.</p>
-          </div>
-          <div class="card">
+          </article>
+
+          <article class="card">
             <img src="https://i.imgur.com/GgdHVJg.jpeg" alt="Monta-Cargas Comercial">
             <h4>Comercial</h4>
             <p>Compacto e silencioso para restaurantes, padarias e lojas. Agilidade e higiene para seu dia a dia.</p>
-          </div>
-          <div class="card">
+          </article>
+
+          <article class="card">
             <img src="https://i.imgur.com/2ojIYWx.jpeg" alt="Monta-Cargas Residencial">
             <h4>Residencial</h4>
             <p>Ideal para casas e condomínios. Leve objetos e mantimentos entre pavimentos com total conforto.</p>
-          </div>
+          </article>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- ===== ORÇAMENTO (COMPLETO) ===== -->
+  <!-- ===== ORÇAMENTO ===== -->
   <section id="orcamento" class="orcamento section">
     <div class="container narrow">
       <h2>Solicite seu Orçamento</h2>
@@ -161,7 +184,6 @@
         </label>
 
         <button type="submit" class="btn-primary">Enviar Solicitação</button>
-
         <p class="muted">Ao enviar, você concorda em ser contatado pela Ruah Elevadores para finalidades comerciais.</p>
       </form>
     </div>
@@ -169,14 +191,19 @@
 
   <!-- ===== FOOTER ===== -->
   <footer id="contato">
-    <p>© 2025 Ruah Elevadores — Excelência em movimento.</p>
-    <p><a href="mailto:contato@ruahelevadores.com.br">contato@ruahelevadores.com.br</a> • Brasília/DF</p>
+    <div class="container">
+      <p>© 2025 Ruah Elevadores — Excelência em movimento.</p>
+      <p><a href="mailto:contato@ruahelevadores.com.br">contato@ruahelevadores.com.br</a> • Brasília/DF</p>
+    </div>
   </footer>
 
-  <!-- ===== WHATSAPP FLOAT ===== -->
-  <a href="https://wa.me/5561999999999?text=Olá!%20Gostaria%20de%20um%20orçamento%20com%20a%20Ruah%20Elevadores."
-     class="whatsapp-float" target="_blank" rel="noopener" aria-label="Fale conosco pelo WhatsApp">
-    <i class="fab fa-whatsapp"></i>
+  <!-- ===== BOTÃO WHATSAPP (ícone SVG embutido) ===== -->
+  <a class="whatsapp-float"
+     href="https://wa.me/5561999999999?text=Ol%C3%A1!%20Gostaria%20de%20um%20or%C3%A7amento%20com%20a%20Ruah%20Elevadores."
+     target="_blank" rel="noopener" aria-label="Fale conosco pelo WhatsApp">
+    <svg viewBox="0 0 32 32" aria-hidden="true" focusable="false">
+      <path fill="currentColor" d="M19.11 17.27c-.29-.15-1.69-.83-1.95-.92-.26-.1-.45-.15-.64.15-.19.29-.74.92-.91 1.11-.17.19-.34.22-.63.07-.29-.15-1.23-.45-2.35-1.44-.87-.77-1.46-1.72-1.63-2.01-.17-.29-.02-.45.13-.6.13-.13.29-.34.44-.52.15-.17.19-.29.29-.48.1-.19.05-.37-.02-.52-.07-.15-.64-1.55-.88-2.12-.23-.56-.47-.48-.64-.48h-.55c-.19 0-.52.07-.79.37-.26.29-1.01.99-1.01 2.41s1.04 2.79 1.19 2.98c.15.19 2.06 3.15 4.99 4.42.7.3 1.25.48 1.68.62.71.23 1.35.2 1.86.12.57-.08 1.69-.69 1.93-1.36.24-.67.24-1.24.17-1.36-.07-.12-.26-.19-.55-.34zM26.6 5.4C23.8 2.6 20.1 1 16.2 1 8.3 1 1.9 7.4 1.9 15.3c0 2.5.7 4.9 2.1 7l-1.4 5.1 5.2-1.4c2 1.1 4.3 1.7 6.7 1.7 7.9 0 14.3-6.4 14.3-14.3 0-3.9-1.6-7.6-4.6-10.6zM16.2 26.8c-2.2 0-4.4-.6-6.3-1.7l-.5-.3-3.1.8.8-3-.3-.5c-1.3-2-2-4.4-2-6.8 0-7 5.7-12.7 12.7-12.7 3.4 0 6.6 1.3 9.1 3.8s3.8 5.7 3.8 9.1c.1 7-5.6 12.6-12.7 12.6z"/>
+    </svg>
   </a>
 
 </body>
