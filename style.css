@@ -14,9 +14,7 @@
   box-sizing: border-box;
 }
 
-html {
-  scroll-behavior: smooth;
-}
+html { scroll-behavior: smooth; }
 
 body {
   font-family: 'Montserrat', sans-serif;
@@ -32,9 +30,7 @@ body {
   margin: 0 auto;
 }
 
-.container.narrow {
-  max-width: 800px;
-}
+.container.narrow { max-width: 800px; }
 
 /* ==================== NAVBAR ==================== */
 .navbar {
@@ -44,7 +40,9 @@ body {
   z-index: 100;
   backdrop-filter: blur(8px);
   -webkit-backdrop-filter: blur(8px);
-  background: rgba(15, 17, 21, 0.6);
+  /* Deixa o fundo mais consistente e com mais contraste sobre o hero */
+  background: rgba(15, 17, 21, 0.75);
+  border-bottom: 1px solid rgba(255,255,255,0.08);
   padding: 10px 0;
   transition: background 0.3s ease;
 }
@@ -53,6 +51,7 @@ body {
   display: flex;
   justify-content: space-between;
   align-items: center;
+  gap: 16px;
 }
 
 .brand {
@@ -60,11 +59,14 @@ body {
   font-weight: 900;
   font-size: 1.2rem;
   text-decoration: none;
+  white-space: nowrap;
 }
 
 .nav-links {
   display: flex;
   gap: 24px;
+  align-items: center;
+  flex-wrap: wrap;
 }
 
 .nav-links a {
@@ -74,15 +76,13 @@ body {
   transition: opacity 0.2s ease;
 }
 
-.nav-links a:hover {
-  opacity: 0.8;
-}
+.nav-links a:hover { opacity: 0.8; }
 
-/* Navbar mobile */
+/* >>> IMPORTANTE: não escondemos mais o menu no mobile para evitar sumiço */
 @media (max-width: 768px) {
-  .nav-links {
-    display: none;
-  }
+  .brand { font-size: 1rem; }
+  .nav-links { gap: 14px; }
+  .nav-links a { font-size: 0.95rem; }
 }
 
 /* ==================== HERO ==================== */
@@ -93,11 +93,26 @@ body {
   position: relative;
 }
 
-/* ==================== TAGLINE ==================== */
-.section {
-  padding: 80px 0;
-  text-align: center;
+/* Overlay sutil para dar legibilidade em qualquer luz */
+.hero::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(60% 60% at 50% 50%, rgba(0,0,0,0.15) 0%, rgba(0,0,0,0.45) 100%),
+    linear-gradient(180deg, rgba(0,0,0,0.28) 0%, rgba(0,0,0,0.0) 35%, rgba(0,0,0,0.28) 100%);
+  pointer-events: none;
 }
+
+@media (max-width: 768px) {
+  .hero { 
+    height: 72vh;
+    background-position: center top;
+  }
+}
+
+/* ==================== TAGLINE ==================== */
+.section { padding: 80px 0; text-align: center; }
 
 .tagline {
   background: linear-gradient(180deg, rgba(255,255,255,0.95), rgba(255,255,255,1));
@@ -158,9 +173,7 @@ body {
   margin: 0 auto 2rem;
 }
 
-.categoria {
-  margin-top: 3rem;
-}
+.categoria { margin-top: 3rem; }
 
 .categoria h3 {
   text-align: center;
@@ -193,6 +206,7 @@ body {
   width: 100%;
   height: 220px;
   object-fit: cover;
+  object-position: center;
 }
 
 .card h4 {
@@ -200,6 +214,7 @@ body {
   font-weight: 800;
   color: var(--azul);
   margin: 16px 0 8px;
+  padding: 0 20px;
 }
 
 .card p {
@@ -254,6 +269,7 @@ input, select, textarea {
   font-size: 1rem;
   font-family: 'Montserrat', sans-serif;
   transition: border-color 0.2s ease;
+  background: #fff;
 }
 
 input:focus, select:focus, textarea:focus {
@@ -303,8 +319,14 @@ footer a {
   z-index: 1000;
   transition: transform 0.2s ease, box-shadow 0.2s ease;
   color: #fff;
-  font-size: 32px;
   text-decoration: none;
+}
+
+/* garante que o ícone renderize centralizado */
+.whatsapp-float i {
+  font-size: 32px;
+  line-height: 1;
+  display: block;
 }
 
 .whatsapp-float:hover {
@@ -314,15 +336,74 @@ footer a {
 
 /* ==================== RESPONSIVIDADE ==================== */
 @media (max-width: 768px) {
+  .tagline-title { font-size: 1.8rem; }
+  .tagline-sub  { font-size: 0.95rem; }
+  .btn-primary  { font-size: 0.9rem; }
+
+  /* Dá mais respiro visual nos cards no mobile */
+  .grid { gap: 20px; }
+}
+
+
+/* ====== AJUSTES MOBILE ====== */
+
+/* Deixa o hero estável no mobile (100svh = viewport real do celular) */
+@media (max-width: 768px) {
+  .hero {
+    min-height: 90svh;   /* ocupa quase a tela toda sem “pular” */
+    height: auto;
+    background-position: center top; /* mostra mais do logo no topo */
+  }
+}
+
+/* Barra mais compacta no celular (tudo em 1 linha) */
+@media (max-width: 768px) {
+  .navbar { padding: 8px 0; }
+
+  .navbar .container {
+    gap: 10px;
+  }
+
+  .brand {
+    font-size: 1rem;          /* reduz um pouco pra caber em 1 linha */
+    white-space: nowrap;      /* impede quebra do “Ruah Elevadores” */
+  }
+
+  .nav-links {
+    gap: 14px;                /* links mais “juntinhos” */
+  }
+
+  .nav-links a {
+    font-size: 0.95rem;
+  }
+}
+
+/* Título e espaçamentos da seção logo abaixo do hero */
+@media (max-width: 768px) {
+  .tagline { padding-top: 28px; }
+
   .tagline-title {
-    font-size: 1.8rem;
+    font-size: clamp(1.35rem, 5vw, 1.8rem);
+    line-height: 1.2;
   }
 
   .tagline-sub {
     font-size: 0.95rem;
   }
+}
 
-  .btn-primary {
-    font-size: 0.9rem;
+/* Move e reduz o botão do WhatsApp pra não cobrir o título */
+@media (max-width: 768px) {
+  .whatsapp-float {
+    bottom: 14px;
+    right: 12px;
+    transform: scale(0.9);
+  }
+}
+@media (max-width: 420px) {
+  .whatsapp-float {
+    bottom: 10px;
+    right: 8px;
+    transform: scale(0.8);
   }
 }
