@@ -1,93 +1,328 @@
-*{box-sizing:border-box;margin:0;padding:0}
-body{font-family:'Montserrat',sans-serif;color:#1b1b1b;background:#fff;overflow-x:hidden;scroll-behavior:smooth}
-a{color:inherit}
-
-/* ===== NAVBAR FIXA ===== */
-.navbar{
-  position:fixed;top:0;left:0;right:0;z-index:1000;height:70px;
-  display:flex;align-items:center;background:rgba(0,0,0,.35);backdrop-filter:blur(6px);
+/* ==================== CONFIGURAÇÕES GERAIS ==================== */
+:root {
+  --azul: #1545C9;
+  --azul-escuro: #0D2C81;
+  --cinza: #f5f5f7;
+  --preto: #0f0f11;
+  --branco: #ffffff;
+  --verde-whats: #25D366;
 }
-.navbar .container{
-  max-width:1200px;margin:0 auto;padding:0 1.5rem;display:flex;justify-content:space-between;align-items:center;
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
-.brand{color:#fff;text-decoration:none;font-weight:800;font-size:1.1rem;letter-spacing:.5px}
-.nav-links a{color:#fff;text-decoration:none;margin-left:22px;font-weight:600;transition:opacity .3s}
-.nav-links a:hover{opacity:.8}
 
-/* ===== HERO (fade-in cinematográfico) ===== */
-.hero{
-  height:100vh;background:url('./imagens/hero-ruah.jpg') center/cover no-repeat fixed;
-  background-position:50% 40%;position:relative;overflow:hidden;opacity:0;animation:fadeInHero 2.4s ease forwards;
-  margin-top:70px; /* compensa a navbar fixa */
+html {
+  scroll-behavior: smooth;
 }
-.hero::after{
-  content:"";position:absolute;inset:0;
-  background:
-    radial-gradient(circle at center, rgba(0,0,0,.08) 0%, rgba(0,0,0,.35) 75%),
-    linear-gradient(to right, rgba(0,0,0,.35) 0%, transparent 20%, transparent 80%, rgba(0,0,0,.35) 100%);
-  mix-blend-mode:multiply;pointer-events:none;opacity:0;animation:fadeInOverlay 2s ease forwards .3s;
+
+body {
+  font-family: 'Montserrat', sans-serif;
+  color: var(--preto);
+  background-color: var(--branco);
+  line-height: 1.6;
 }
-@keyframes fadeInHero{0%{opacity:0;transform:scale(1.05)}100%{opacity:1;transform:scale(1)}}
-@keyframes fadeInOverlay{from{opacity:0}to{opacity:1}}
 
-/* ===== SEÇÕES BASE ===== */
-.section{padding:80px 0;text-align:center}
-.container{max-width:1200px;margin:auto;padding:0 1.5rem}
-.container.narrow{max-width:900px;margin:auto}
-.highlight{color:#1545C9;text-shadow:0 0 12px rgba(21,69,201,.3)}
-.btn-primary{display:inline-block;padding:1rem 2.2rem;border-radius:12px;background:#1545C9;color:#fff;text-decoration:none;font-weight:800;transition:.3s}
-.btn-primary:hover{background:#0d2c81;transform:translateY(-2px)}
-
-/* TAGLINE */
-.tagline-title{font-weight:800;font-size:2.4rem;margin-bottom:.4em}
-.tagline-sub{font-size:1.1rem;opacity:.9;margin-bottom:1.5em}
-
-/* PRODUTOS */
-.produtos{background:#f9f9f9;padding:100px 0;text-align:center}
-.produtos h2{font-size:2.3rem;color:#1545C9;font-weight:800;margin-bottom:10px}
-.produtos .intro{max-width:800px;margin:0 auto 60px;color:#444;font-size:1.1rem}
-.categoria{margin-bottom:70px}
-.categoria h3{font-size:1.8rem;color:#111;margin-bottom:30px}
-.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:30px;justify-items:center}
-.card{background:#fff;border-radius:14px;overflow:hidden;box-shadow:0 8px 25px rgba(0,0,0,.08);transition:transform .3s,box-shadow .3s;max-width:360px}
-.card:hover{transform:translateY(-8px);box-shadow:0 12px 35px rgba(0,0,0,.12)}
-.card img{width:100%;height:240px;object-fit:cover}
-.card h4{margin:18px 0 10px;font-size:1.2rem;color:#1545C9}
-.card p{padding:0 20px 25px;color:#555;font-size:.97rem}
-
-/* ORÇAMENTO */
-.orcamento{background:#fff}
-.orcamento h2{font-size:2.2rem;color:#1545C9;font-weight:800;margin-bottom:10px}
-.orcamento .intro{max-width:760px;margin:0 auto 28px;color:#444}
-.form{margin-top:12px;text-align:left}
-.form .grid{display:grid;gap:16px;grid-template-columns:1fr 1fr;margin-bottom:16px}
-.form label{display:flex;flex-direction:column;gap:8px}
-.form label span{font-weight:700}
-input,select,textarea{
-  width:100%;padding:12px 14px;border:2px solid #ddd;border-radius:10px;font-size:1rem;
-  transition:border .2s,box-shadow .2s;background:#fff
+/* ==================== CONTAINERS ==================== */
+.container {
+  width: 90%;
+  max-width: 1200px;
+  margin: 0 auto;
 }
-input:focus,select:focus,textarea:focus{
-  border-color:#1545C9;outline:none;box-shadow:0 0 0 4px rgba(21,69,201,.15)
+
+.container.narrow {
+  max-width: 800px;
 }
-.help{color:#777;font-size:.85rem}
-.muted{color:#888;font-size:.9rem;margin-top:12px}
-button[type=submit]{cursor:pointer}
 
-/* FOOTER */
-footer{background:#111;color:#ccc;text-align:center;padding:40px 10px;font-size:.95rem}
-footer a{color:#9fc4ff;text-decoration:none}
-
-/* WHATSAPP FLOAT */
-.whatsapp-float{
-  position:fixed;bottom:25px;right:25px;background:#25D366;color:#fff;width:65px;height:65px;border-radius:50%;
-  display:flex;align-items:center;justify-content:center;font-size:2.2rem;box-shadow:0 8px 20px rgba(37,211,102,.3);z-index:1000;transition:all .3s
+/* ==================== NAVBAR ==================== */
+.navbar {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  z-index: 100;
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  background: rgba(15, 17, 21, 0.6);
+  padding: 10px 0;
+  transition: background 0.3s ease;
 }
-.whatsapp-float:hover{transform:scale(1.1) rotate(6deg);background:#128C7E}
 
-/* RESPONSIVO */
-@media (max-width: 900px){.tagline-title{font-size:2rem}}
-@media (max-width: 768px){
-  .form .grid{grid-template-columns:1fr}
-  .produtos{padding:80px 0}
+.navbar .container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.brand {
+  color: var(--branco);
+  font-weight: 900;
+  font-size: 1.2rem;
+  text-decoration: none;
+}
+
+.nav-links {
+  display: flex;
+  gap: 24px;
+}
+
+.nav-links a {
+  color: var(--branco);
+  font-weight: 700;
+  text-decoration: none;
+  transition: opacity 0.2s ease;
+}
+
+.nav-links a:hover {
+  opacity: 0.8;
+}
+
+/* Navbar mobile */
+@media (max-width: 768px) {
+  .nav-links {
+    display: none;
+  }
+}
+
+/* ==================== HERO ==================== */
+.hero {
+  background: url("imagens/hero-ruah.jpg") no-repeat center center/cover;
+  height: 100vh;
+  width: 100%;
+  position: relative;
+}
+
+/* ==================== TAGLINE ==================== */
+.section {
+  padding: 80px 0;
+  text-align: center;
+}
+
+.tagline {
+  background: linear-gradient(180deg, rgba(255,255,255,0.95), rgba(255,255,255,1));
+}
+
+.tagline-title {
+  font-size: 2.2rem;
+  font-weight: 900;
+  color: var(--preto);
+  margin-bottom: 1rem;
+}
+
+.tagline-title .highlight {
+  color: var(--azul);
+  text-shadow: 0 0 10px rgba(21, 69, 201, 0.2);
+}
+
+.tagline-sub {
+  color: #444;
+  font-size: 1.05rem;
+  margin-bottom: 1.8rem;
+}
+
+.btn-primary {
+  display: inline-block;
+  background: var(--azul);
+  color: #fff;
+  padding: 14px 24px;
+  border-radius: 10px;
+  font-weight: 800;
+  text-decoration: none;
+  transition: 0.2s ease;
+}
+
+.btn-primary:hover {
+  background: var(--azul-escuro);
+  transform: translateY(-2px);
+}
+
+/* ==================== PRODUTOS ==================== */
+.produtos {
+  background-color: var(--cinza);
+  padding: 100px 0;
+}
+
+.produtos h2 {
+  text-align: center;
+  font-weight: 900;
+  font-size: 2rem;
+  margin-bottom: 0.8rem;
+  color: var(--azul-escuro);
+}
+
+.produtos .intro {
+  text-align: center;
+  color: #555;
+  max-width: 800px;
+  margin: 0 auto 2rem;
+}
+
+.categoria {
+  margin-top: 3rem;
+}
+
+.categoria h3 {
+  text-align: center;
+  font-size: 1.6rem;
+  color: var(--azul);
+  font-weight: 800;
+  margin-bottom: 1.2rem;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 30px;
+}
+
+.card {
+  background: #fff;
+  border-radius: 16px;
+  overflow: hidden;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
+  transition: 0.3s ease;
+}
+
+.card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 12px 28px rgba(0, 0, 0, 0.15);
+}
+
+.card img {
+  width: 100%;
+  height: 220px;
+  object-fit: cover;
+}
+
+.card h4 {
+  font-size: 1.2rem;
+  font-weight: 800;
+  color: var(--azul);
+  margin: 16px 0 8px;
+}
+
+.card p {
+  font-size: 0.95rem;
+  color: #444;
+  padding: 0 20px 20px;
+}
+
+/* ==================== ORÇAMENTO ==================== */
+.orcamento {
+  background: #fff;
+  padding: 100px 0;
+}
+
+.orcamento h2 {
+  text-align: center;
+  font-weight: 900;
+  color: var(--azul);
+  margin-bottom: 0.5rem;
+}
+
+.orcamento .intro {
+  text-align: center;
+  color: #555;
+  margin-bottom: 2.5rem;
+}
+
+.form {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.form .grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 20px;
+}
+
+label span {
+  display: block;
+  font-weight: 700;
+  color: var(--azul);
+  margin-bottom: 6px;
+}
+
+input, select, textarea {
+  width: 100%;
+  padding: 12px;
+  border: 2px solid #e4e4e4;
+  border-radius: 8px;
+  font-size: 1rem;
+  font-family: 'Montserrat', sans-serif;
+  transition: border-color 0.2s ease;
+}
+
+input:focus, select:focus, textarea:focus {
+  border-color: var(--azul);
+  outline: none;
+  box-shadow: 0 0 0 4px rgba(21, 69, 201, 0.15);
+}
+
+button.btn-primary {
+  width: fit-content;
+  margin: 0 auto;
+}
+
+.muted {
+  text-align: center;
+  font-size: 0.85rem;
+  color: #666;
+}
+
+/* ==================== FOOTER ==================== */
+footer {
+  background: var(--azul);
+  color: #fff;
+  text-align: center;
+  padding: 30px 15px;
+  font-size: 0.95rem;
+}
+
+footer a {
+  color: #fff;
+  text-decoration: underline;
+}
+
+/* ==================== WHATSAPP FLOAT ==================== */
+.whatsapp-float {
+  position: fixed;
+  bottom: 25px;
+  right: 25px;
+  background: var(--verde-whats);
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.25);
+  z-index: 1000;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  color: #fff;
+  font-size: 32px;
+  text-decoration: none;
+}
+
+.whatsapp-float:hover {
+  transform: scale(1.1);
+  box-shadow: 0 8px 20px rgba(37,211,102,0.4);
+}
+
+/* ==================== RESPONSIVIDADE ==================== */
+@media (max-width: 768px) {
+  .tagline-title {
+    font-size: 1.8rem;
+  }
+
+  .tagline-sub {
+    font-size: 0.95rem;
+  }
+
+  .btn-primary {
+    font-size: 0.9rem;
+  }
 }
